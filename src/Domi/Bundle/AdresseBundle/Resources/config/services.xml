@@ -1,0 +1,30 @@
+<?xml version="1.0" ?>
+
+<container xmlns="http://symfony.com/schema/dic/services"
+           xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+           xsi:schemaLocation="http://symfony.com/schema/dic/services http://symfony.com/schema/dic/services/services-1.0.xsd">
+
+    <parameters>
+        <parameter key="domi.ville_manager.class">Domi\Bundle\AdresseBundle\Manager\VilleManager</parameter>
+    </parameters>
+
+    <services>
+        <service id="domi.ville_manager" class="%domi.ville_manager.class%">
+            <argument type="service" id="doctrine.orm.entity_manager" />
+        </service>
+    </services>
+
+    <!--
+    <parameters>
+        <parameter key="domi_detail.ville.class">Domi\Bundle\AdresseBundle\Ville</parameter>
+    </parameters>
+
+    <services>
+        <service id="domi_detail.ville" class="%domi_detail.ville.class%">
+            <argument type="service" id="service_id" />
+            <argument>plain_value</argument>
+            <argument>%parameter_name%</argument>
+        </service>
+    </services>
+    -->
+</container>

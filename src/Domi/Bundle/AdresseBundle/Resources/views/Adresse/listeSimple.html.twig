@@ -1,0 +1,22 @@
+{#{% extends "DomiAdresseBundle:Adresse:show.html.twig" %}#}
+{#{% set title='Adresse' %}#}
+{#{% set titre='Adresse' %}#}
+{#{% set soustitre="Liste des Adresses" %}#}
+
+
+
+ {% block body %}
+     {#{% for entite in entity.adresse %}#}
+         <li>{{ entite.pointRemise }}&nbsp;{{ entite.complement }}&nbsp;
+             {{ entite.numeroVoie }}&nbsp;{{ entite.nomVoie }}&nbsp;
+             {{ entite.extension }}&nbsp;{{ entite.lieuDit }}&nbsp;
+             {{ entite.mentionDistribution }}&nbsp;
+             {{ entite.cedex }}&nbsp;{{ entite.libBureauCedex }}&nbsp;
+             {{ entite.divisionTerritoriale }}&nbsp;
+         </li>
+     {#{% endfor %}#}
+
+     <p>
+         <a href="/adresse/new">Nouvelle adresse(src/Domi/Bundle/AdresseBundle/Resources/views/Adresse/listeSimple.html.twig:20)</a>
+     </p>
+ {% endblock %}

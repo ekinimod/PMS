@@ -1,0 +1,134 @@
+{% extends '::base.html.twig' %}
+{% set title='Ville' %}
+{% set titre='Ville' %}
+{% set soustitre='Détail Ville' %}
+
+{% block body -%}
+
+    <table class="record_properties">
+        <tbody>
+            <tr>
+                <th>Id</th>
+                <td>{{ entity.id }}</td>
+            </tr>
+            <tr>
+                <th>Departement</th>
+                <td>{{ entity.departement }}</td>
+            </tr>
+            <tr>
+                <th>Slug</th>
+                <td>{{ entity.slug }}</td>
+            </tr>
+            <tr>
+                <th>Nom</th>
+                <td>{{ entity.nom }}</td>
+            </tr>
+            <tr>
+                <th>Nomsimple</th>
+                <td>{{ entity.nomSimple }}</td>
+            </tr>
+            <tr>
+                <th>Nomreel</th>
+                <td>{{ entity.nomReel }}</td>
+            </tr>
+            <tr>
+                <th>Nomsoundex</th>
+                <td>{{ entity.nomSoundex }}</td>
+            </tr>
+            <tr>
+                <th>Nommetaphone</th>
+                <td>{{ entity.nomMetaphone }}</td>
+            </tr>
+            <tr>
+                <th>Codepostal</th>
+                <td>{{ entity.codePostal }}</td>
+            </tr>
+            <tr>
+                <th>Commune</th>
+                <td>{{ entity.commune }}</td>
+            </tr>
+            <tr>
+                <th>Codecommune</th>
+                <td>{{ entity.codeCommune }}</td>
+            </tr>
+            <tr>
+                <th>Arrondissement</th>
+                <td>{{ entity.arrondissement }}</td>
+            </tr>
+            <tr>
+                <th>Canton</th>
+                <td>{{ entity.canton }}</td>
+            </tr>
+            <tr>
+                <th>Amdi</th>
+                <td>{{ entity.amdi }}</td>
+            </tr>
+            <tr>
+                <th>Population2010</th>
+                <td>{{ entity.population2010 }}</td>
+            </tr>
+            <tr>
+                <th>Population1999</th>
+                <td>{{ entity.population1999 }}</td>
+            </tr>
+            <tr>
+                <th>Population2012</th>
+                <td>{{ entity.population2012 }}</td>
+            </tr>
+            <tr>
+                <th>Densite2010</th>
+                <td>{{ entity.densite2010 }}</td>
+            </tr>
+            <tr>
+                <th>Surface</th>
+                <td>{{ entity.surface }}</td>
+            </tr>
+            <tr>
+                <th>Longitudedeg</th>
+                <td>{{ entity.longitudeDeg }}</td>
+            </tr>
+            <tr>
+                <th>Latitudedeg</th>
+                <td>{{ entity.latitudeDeg }}</td>
+            </tr>
+            <tr>
+                <th>Longitudegrd</th>
+                <td>{{ entity.longitudeGrd }}</td>
+            </tr>
+            <tr>
+                <th>Latitudegrd</th>
+                <td>{{ entity.latitudeGrd }}</td>
+            </tr>
+            <tr>
+                <th>Longitudedms</th>
+                <td>{{ entity.longitudeDms }}</td>
+            </tr>
+            <tr>
+                <th>Latitudedms</th>
+                <td>{{ entity.latitudeDms }}</td>
+            </tr>
+            <tr>
+                <th>Zmin</th>
+                <td>{{ entity.zmin }}</td>
+            </tr>
+            <tr>
+                <th>Zmax</th>
+                <td>{{ entity.zmax }}</td>
+            </tr>
+        </tbody>
+    </table>
+
+        <ul class="record_actions">
+    <li>
+        <a href="{{ path('ville') }}">
+            Back to the list
+        </a>
+    </li>
+    <li>
+        <a href="{{ path('ville_edit', { 'id': entity.id }) }}">
+            Edit
+        </a>
+    </li>
+    <li>{{ form(delete_form) }}</li>
+</ul>
+{% endblock %}

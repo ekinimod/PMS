@@ -1,0 +1,4 @@
+domi_film_film:
+    resource: "@DomiFilmBundle/Resources/config/routing/film.yml"
+    prefix:   /film
+

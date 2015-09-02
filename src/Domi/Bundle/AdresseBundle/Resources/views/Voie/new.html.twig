@@ -1,0 +1,17 @@
+{% extends '::base.html.twig' %}
+{% set title='Voie' %}
+{% set titre='Voie' %}
+{% set soustitre='Création Voie' %}
+
+{% block body -%}
+
+    {{ form(form) }}
+
+        <ul class="record_actions">
+    <li>
+        <a href="{{ path('voie') }}">
+            Back to the list
+        </a>
+    </li>
+</ul>
+{% endblock %}

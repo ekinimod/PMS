@@ -1,0 +1,15 @@
+#services:
+##    domi_adresse.example:
+##        class: Domi\Bundle\AdresseBundle\Example
+##        arguments: [@service_id, "plain_value", %parameter%]
+#domi_adresse_ville:
+#  class: "%domi_adresse.ville.class%"
+#  arguments: type="service" id="service_id"
+#  arguments: plain_value
+#  arguments: "%parameter_name%"
+services:
+    domi_adresse.repository.ville:
+        class: Domi\Bundle\AdresseBundle\Repository\VilleRepository
+        factory_service: doctrine.orm.default_entity_manager
+        factory_method: getRepository
+        arguments: ['DomiAdresseBundle:Ville', 'adresse']

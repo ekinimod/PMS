@@ -1,0 +1,18 @@
+{% extends '::base.html.twig' %}
+{% set title='Adresse' %}
+{% set titre='Adresse' %}
+{% set soustitre='Edition Adresse' %}
+
+{% block body -%}
+
+    {{ form(edit_form) }}
+    {{ form_rest(edit_form) }}
+    <li>{{ form(delete_form) }}</li>
+    <ul class="record_actions">
+        <li>
+            <a href="{{ path('adresse') }}">
+                Back to the list (src/Domi/Bundle/AdresseBundle/Resources/views/Adresse/edit.html.twig:21)
+            </a>
+        </li>
+    </ul>
+{% endblock %}

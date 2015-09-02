@@ -1,0 +1,52 @@
+{% extends "DomiAdresseBundle:Individu:show.html.twig" %}
+{% set title='Individu' %}
+{% set titre='Individu' %}
+{% set soustitre="Liste des Individus" %}
+
+
+
+ {% block body %}
+     <BR><BR>
+
+     <table class="table table-condensed table-hover ">
+         <thead>
+         <tr>
+             <th>&nbsp;</th>
+             <th>&nbsp;</th>
+             <th>Editer</th>
+             <th>Détails</th>
+             <th>Supprimer</th>
+         </tr>
+         {% for adresse in edit_form.individu %}
+             <tr>
+                 <td>
+                     {{ edit_form.nom }}
+
+                 </td>
+                 <td>
+                     {{ edit_form.prenom }}
+                 </td>
+                 <td>
+                     <a href="/adresse/edit/{{ adresse.id }}">
+                         <span title="Editer" class="glyphicon glyphicon-pencil" aria-hidden="true"></span>
+                     </a>
+                 </td>
+                 <td>
+                     <a href="/adresse/detail/{{ adresse.id }}">
+                         <span title="Détails" class="glyphicon glyphicon-edit" aria-hidden="true"></span>
+                     </a>
+                 </td>
+                 <td>
+                     <a href="/adresse/delete/{{ adresse.id }}">
+                         <span title="Supprimer" class=" glyphicon glyphicon-remove" aria-hidden="true"></span>
+                     </a>
+                 </td>
+
+             </tr>
+
+         {% endfor %}
+     </table>
+     <p>
+         <a href="/adresse/new">Nouvelle adresse (src/Domi/Bundle/AdresseBundle/Resources/views/Individu/listeSimple.html.twig:50)</a>
+     </p>
+ {% endblock %}

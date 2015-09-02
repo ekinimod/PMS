@@ -1,0 +1,31 @@
+{% extends '::base.html.twig' %}
+{% set title='Adresse' %}
+{% set titre='Adresse' %}
+{% set soustitre='Création Adresse' %}
+
+{% block body -%}
+    {#{{ form_start(form) }}#}
+    {#{{ form_widget(form) }}#}
+    {#{{ form_end(form) }}#}
+
+
+    {{ form_start(form) }}
+    {{ form_errors(form) }}
+
+    {{ form_row(form.pointRemise) }}
+    {{ form_row(form.complement) }}
+
+    {{ form_row(form.submit, { 'label': 'Submit src/Domi/Bundle/AdresseBundle/Resources/views/Adresse/new.html.twig:18' }) }}
+    {{ form_end(form) }}
+
+
+
+
+    <ul class="record_actions">
+        <li>
+            <a href="{{ path('adresse') }}">
+                Back to the list (src/Domi/Bundle/AdresseBundle/Resources/views/Adresse/new.html.twig:12)
+            </a>
+        </li>
+    </ul>
+{% endblock %}

@@ -1,0 +1,22 @@
+{% extends '::base.html.twig' %}
+{% set title='Adresse' %}
+{% set titre='Adresse' %}
+{% set soustitre='Détail Adresse' %}
+
+{% block body %}
+    <h3>{{ entity.pointRemise() }}&nbsp;{{ entity.complement }}&nbsp;</h3>
+    <h4>
+        {{ entity.numeroVoie }}&nbsp;{{ entity.nomVoie }}<br>
+        {{ entity.extension }}&nbsp;{{ entity.lieuDit }}<br>
+        {{ entity.mentionDistribution }}<br>
+        {{ entity.cedex }}&nbsp;{{ entity.libBureauCedex }}<br>
+        {{ entity.divisionTerritoriale }}&nbsp;
+    </h4>
+    <ul class="record_actions">
+        <li>
+            <a href="{{ path('adresse') }}">
+                Back to the list (src/Domi/Bundle/AdresseBundle/Resources/views/Adresse/show.html.twig:18)
+            </a>
+        </li>
+    </ul>
+{% endblock %}

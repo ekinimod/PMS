@@ -1,0 +1,27 @@
+{% block body %}
+    <div class="row">
+        <div class="btn-group" role="group">
+            {# Boutons définis en tant que form #}
+            {% if delete_form is defined %}
+                <div class="col-md-4">{{ form(delete_form) }}</div>
+            {% endif %}
+
+            {# Boutons définis dans le entiteType#}
+            {% if data.btn_update is defined %}
+                <div class="col-md-4">{{ form_widget(data.btn_update) }}</div>
+            {% endif %}
+
+            {% if data.btn_create is defined %}
+                <div class="col-md-4">{{ form_widget(data.btn_create) }}</div>
+            {% endif %}
+
+            {# Boutons définis en tant que form #}
+            {% if retour_form is defined %}
+                <div class="col-md-4"> {{ form(retour_form) }}</div>
+            {% endif %}
+
+        </div>
+    </div>
+
+    {#{{ dump(retour_form) }}#}
+{% endblock %}

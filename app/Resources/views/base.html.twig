@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+	<link rel="icon" type="image/x-icon" href="{{ asset('img/favicon.ico') }}"/>
+	{% include "meta.html.twig" %}
+	{% include "stylesheet.html.twig" %}
+
+</head>
+<body>
+{% include "header.html.twig" %}
+
+<div id="page-content-wrapper">
+	<div class="page-content">
+		<div class="container">
+			{% block body %}
+				{% include "messages.html.twig" %}
+            {% endblock %}
+		</div>
+	</div>
+</div>
+
+{% include "javascript.html.twig" %}
+{% include "footer.html.twig" %}

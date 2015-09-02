@@ -1,0 +1,15 @@
+{% block messages %}
+{% for type, messages in app.session.flashBag.all %}
+    {% for message in messages %}
+        <div class="{{ type }}">
+            {{ message|trans({}, 'FOSUserBundle') }}
+        </div>
+    {% endfor %}
+{% endfor %}
+
+<div>
+    {% block content %}
+        {% block fos_user_content %}{% endblock %}
+    {% endblock %}
+</div>
+{% endblock  %}

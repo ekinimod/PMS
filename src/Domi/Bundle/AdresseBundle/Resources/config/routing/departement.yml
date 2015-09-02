@@ -1,0 +1,32 @@
+departement:
+    path:     /{page}
+    defaults: { _controller: "DomiAdresseBundle:Departement:index",page:1 }
+    requirements:
+              page: \d+
+
+departement_show:
+    path:     /show/{id}
+    defaults: { _controller: "DomiAdresseBundle:Departement:show" }
+
+departement_new:
+    path:     /new
+    defaults: { _controller: "DomiAdresseBundle:Departement:new" }
+
+departement_create:
+    path:     /create
+    defaults: { _controller: "DomiAdresseBundle:Departement:create" }
+    methods:  POST
+
+departement_edit:
+    path:     /edit/{id}
+    defaults: { _controller: "DomiAdresseBundle:Departement:edit" }
+
+departement_update:
+    path:     /update/{id}
+    defaults: { _controller: "DomiAdresseBundle:Departement:update" }
+    methods:  [POST, PUT]
+
+departement_delete:
+    path:     /delete/{id}
+    defaults: { _controller: "DomiAdresseBundle:Departement:delete" }
+    methods:  [POST, DELETE]

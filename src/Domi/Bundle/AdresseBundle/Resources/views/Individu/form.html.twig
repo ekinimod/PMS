@@ -1,0 +1,39 @@
+{% extends "::base.html.twig" %}
+{% set title='Individu' %}
+{% set titre='Individu' %}
+{% set soustitre='Formulaire.' %}
+
+
+ {% block body %}
+     <BR><BR>
+
+     {% use "bootstrap_3_layout.html.twig" %}
+     {{ form_start(form, {'class': 'form-horizontal', 'method': 'POST', 'attr': {'class': 'form-inline','novalidate': 'novalidate'}}) }}
+
+     {{ form_label(form.nom) }}
+     {{ form_errors(form.nom) }}
+     {{ form_widget(form.nom) }}
+
+     {{ form_label(form.prenom) }}
+     {{ form_errors(form.prenom) }}
+     {{ form_widget(form.prenom) }}
+
+     {{ form_label(form.email) }}
+     {{ form_errors(form.email) }}
+     {{ form_widget(form.email) }}
+
+     {#<BR>#}
+     {#{{ form_widget(form.save) }}#}
+     {#<BR>#}
+     {#{{ form_rest(form) }}#}
+     <BR>
+     {{ form_end(form) }}
+     <br>
+
+     <ul>
+         <li><a href="{{ path('individu_new') }}">Nouvel {{titre  }} (src/Domi/Bundle/AdresseBundle/Resources/views/Individu/form.html.twig:34)</a></li>
+         <li><a href="{{ path('individu') }}">Retour Liste des {{titre  }} (src/Domi/Bundle/AdresseBundle/Resources/views/Individu/form.html.twig:35)</a></li>
+     </ul>
+
+
+ {% endblock %}

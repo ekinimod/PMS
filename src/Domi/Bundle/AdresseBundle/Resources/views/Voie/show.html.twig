@@ -1,0 +1,38 @@
+{% extends '::base.html.twig' %}
+{% set title='Voie' %}
+{% set titre='Voie' %}
+{% set soustitre='Détail Voie' %}
+
+{% block body -%}
+
+    <table class="record_properties">
+        <tbody>
+            <tr>
+                <th>Id</th>
+                <td>{{ entity.id }}</td>
+            </tr>
+            <tr>
+                <th>Libvoie</th>
+                <td>{{ entity.libVoie }}</td>
+            </tr>
+            <tr>
+                <th>Abreviationvoie</th>
+                <td>{{ entity.abreviationVoie }}</td>
+            </tr>
+        </tbody>
+    </table>
+
+        <ul class="record_actions">
+    <li>
+        <a href="{{ path('voie') }}">
+            Back to the list
+        </a>
+    </li>
+    <li>
+        <a href="{{ path('voie_edit', { 'id': entity.id }) }}">
+            Edit
+        </a>
+    </li>
+    <li>{{ form(delete_form) }}</li>
+</ul>
+{% endblock %}

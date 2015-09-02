@@ -1,0 +1,17 @@
+{% extends '::base.html.twig' %}
+{% set title='Pays' %}
+{% set titre='Pays' %}
+{% set soustitre='Creation Pays' %}
+
+{% block body -%}
+
+    {{ form(form) }}
+
+        <ul class="record_actions">
+    <li>
+        <a href="{{ path('pays') }}">
+            Back to the list
+        </a>
+    </li>
+</ul>
+{% endblock %}

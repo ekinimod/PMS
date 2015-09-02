@@ -1,0 +1,4 @@
+services:
+#    domi_docu.example:
+#        class: Domi\Bundle\DocuBundle\Example
+#        arguments: [@service_id, "plain_value", %parameter%]

@@ -1,0 +1,50 @@
+{% extends "::base.html.twig" %}
+{% set title='Individu' %}
+{% set titre='Individu' %}
+{% set soustitre='Edition Individus' %}
+
+{% block body -%}
+    {#{% include "DomiAdresseBundle:Adresse:listeSimple.html.twig" %}#}
+    {{ form(edit_form) }}
+
+    {{ form_start(edit_form, {'class': 'edit_form-horizontal', 'method': 'POST', 'attr': {'class': 'form-inline','novalidate': 'novalidate'}}) }}
+
+    {{ form_label(edit_form.nom) }}
+    {{ form_errors(edit_form.nom) }}
+    {{ form_widget(edit_form.nom) }}
+
+    {{ form_label(edit_form.prenom) }}
+    {{ form_errors(edit_form.prenom) }}
+    {{ form_widget(edit_form.prenom) }}
+
+    {{ form_label(edit_form.email) }}
+    {{ form_errors(edit_form.email) }}
+    {{ form_widget(edit_form.email) }}
+
+
+    <BR><BR>
+    {#{{ form_widget(edit_form.save) }}#}
+
+    <h3>Les adresses</h3>
+
+
+    {# itère sur chaque tag existant et affiche son unique champ : name #}
+    {% for entite in edit_form.adresse %}
+        {#<li>{{ form_row(adresse.name) }}</li>#}
+        {#<li>{{ adresse.pointRemise }}&nbsp;{{ adresse.complement }}&nbsp;#}
+            {#{{ adresse.numeroVoie }}&nbsp;{{ adresse.nomVoie }}&nbsp;#}
+            {#{{ adresse.extension }}&nbsp;{{ adresse.lieuDit }}&nbsp;#}
+            {#{{ adresse.mentionDistribution }}&nbsp;#}
+            {#{{ adresse.cedex }}&nbsp;{{ adresse.libBureauCedex }}&nbsp;#}
+            {#{{ adresse.divisionTerritoriale }}&nbsp;#}
+        {#</li>#}
+        {% include "DomiAdresseBundle:Adresse:listeSimple.html.twig" %}
+    {% endfor %}
+
+
+
+
+    {{ form_rest(edit_form) }}
+    {{ form_end(edit_form) }}
+
+{% endblock %}

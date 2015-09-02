@@ -1,0 +1,35 @@
+film:
+    path:     /{page}
+    defaults: { _controller: "DomiFilmBundle:Film:index", page:1 }
+    requirements:
+        id: \d+
+
+film_show:
+    path:     /{id}/show
+    defaults: { _controller: "DomiFilmBundle:Film:show" }
+
+film_new_or_update:
+    path:     /{id}/neworupdate
+    defaults: { _controller: "DomiFilmBundle:Film:newOrUpdate",id: 0 }
+    requirements:
+        id: \d+
+
+
+film_create:
+    path:     /create
+    defaults: { _controller: "DomiFilmBundle:Film:create" }
+    methods:  POST
+
+#film_edit:
+#    path:     /{id}/edit
+#    defaults: { _controller: "DomiFilmBundle:Film:edit" }
+
+film_update:
+    path:     /{id}/update
+    defaults: { _controller: "DomiFilmBundle:Film:newOrUpdate" }
+    methods:  [POST, PUT]
+
+film_delete:
+    path:     /{id}/delete
+    defaults: { _controller: "DomiFilmBundle:Film:delete" }
+    methods:  [POST, DELETE]

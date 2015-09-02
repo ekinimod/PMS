@@ -1,0 +1,55 @@
+#Repertoire PHP de la V5.5.26
+export PATH="$PATH:/share/CACHEDEV1_DATA/.qpkg/PHP/bin"
+#Rep de Symf
+cd /share/CACHEDEV1_DATA/Web/PMS
+
+
+
+
+php composer.phar update
+
+# Pour vider le cache de prod
+php app/console cache:clear --env=prod   --no-warmup
+
+#Mode interactif
+php app/console --shell
+
+# Creation d'un Bundle
+php app/console generate:bundle --format=annotation --structure --namespace=Domi/Bundle/UserBundle
+
+#Creation du CRUD
+php app/console generate:doctrine:crud --format=yml --with-write --no-interaction --entity DomiFilmBundle:Film
+
+
+#DEBUG liste des routes
+php app/console debug:router
+php app/console debug:router domi_film_film
+php app/console router:match /voie/new
+
+
+############
+# DOCTRINE #
+############
+cd /media/ScsiRaid140Go/web/ZF2
+
+#Creation des entity
+php app/console doctrine:mapping:convert xml tmp --from-database --force --em=film
+
+php app/console doctrine:mapping:import DomiFilmBundle annotation --em=film
+php app/console doctrine:generate:entities  DomiFilmBundle
+
+
+#MAJ du schema SGBDR
+php app/console doctrine:schema:update --force --em=adresse_new
+
+#teste si l'environnement Doctrine actuel est configuré de manière optimale pour la production.
+php app/console doctrine:ensure-production-settings
+
+
+#Repertoire Data MariaDB
+#/share/CACHEDEV1_DATA/.@qmariadb/data
+#Repertoire Prog MariaDB
+#/share/CACHEDEV1_DATA/.qpkg/QMariaDB/mysql
+#Repertoire Prog MariaDB
+#/share/CACHEDEV1_DATA/.qpkg/QMariaDB/mysql
+

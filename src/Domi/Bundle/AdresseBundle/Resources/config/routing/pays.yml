@@ -1,0 +1,32 @@
+pays:
+    path:     /{page}
+    defaults: { _controller: "DomiAdresseBundle:Pays:index",page:1 }
+    requirements:
+        page: \d+
+
+pays_show:
+    path:     /{id}/show
+    defaults: { _controller: "DomiAdresseBundle:Pays:show" }
+
+pays_new:
+    path:     /new
+    defaults: { _controller: "DomiAdresseBundle:Pays:new" }
+
+pays_create:
+    path:     /create
+    defaults: { _controller: "DomiAdresseBundle:Pays:create" }
+    methods:  POST
+
+pays_edit:
+    path:     /{id}/edit
+    defaults: { _controller: "DomiAdresseBundle:Pays:edit" }
+
+pays_update:
+    path:     /{id}/update
+    defaults: { _controller: "DomiAdresseBundle:Pays:update" }
+    methods:  [POST, PUT]
+
+pays_delete:
+    path:     /{id}/delete
+    defaults: { _controller: "DomiAdresseBundle:Pays:delete" }
+    methods:  [POST, DELETE]

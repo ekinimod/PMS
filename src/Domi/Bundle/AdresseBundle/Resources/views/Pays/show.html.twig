@@ -1,0 +1,52 @@
+{% extends '::base.html.twig' %}
+{% set title='Pays' %}
+{% set titre='Pays' %}
+{% set soustitre='Détail Pays' %}
+
+
+{% block body -%}
+    <h1>Pays</h1>
+
+    <table class="record_properties">
+        <tbody>
+            <tr>
+                <th>Id</th>
+                <td>{{ entity.id }}</td>
+            </tr>
+            <tr>
+                <th>Code</th>
+                <td>{{ entity.code }}</td>
+            </tr>
+            <tr>
+                <th>Alpha2</th>
+                <td>{{ entity.alpha2 }}</td>
+            </tr>
+            <tr>
+                <th>Alpha3</th>
+                <td>{{ entity.alpha3 }}</td>
+            </tr>
+            <tr>
+                <th>Nomengb</th>
+                <td>{{ entity.nomEnGb }}</td>
+            </tr>
+            <tr>
+                <th>Nomfrfr</th>
+                <td>{{ entity.nomFrFr }}</td>
+            </tr>
+        </tbody>
+    </table>
+
+        <ul class="record_actions">
+    <li>
+        <a href="{{ path('pays') }}">
+            Back to the list
+        </a>
+    </li>
+    <li>
+        <a href="{{ path('pays_edit', { 'id': entity.id }) }}">
+            Edit
+        </a>
+    </li>
+    <li>{{ form(delete_form) }}</li>
+</ul>
+{% endblock %}

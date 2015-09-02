@@ -1,0 +1,51 @@
+{% extends '::base.html.twig' %}
+{% set title='Pays' %}
+{% set titre='Pays' %}
+{% set soustitre='Liste Pays' %}
+
+{% block body -%}
+
+    <table class="records_list">
+        <thead>
+            <tr>
+                <th>Id</th>
+                <th>Code</th>
+                <th>Alpha2</th>
+                <th>Alpha3</th>
+                <th>Nomengb</th>
+                <th>Nomfrfr</th>
+                <th>Actions</th>
+            </tr>
+        </thead>
+        <tbody>
+        {% for entity in entities %}
+            <tr>
+                <td><a href="{{ path('pays_show', { 'id': entity.id }) }}">{{ entity.id }}</a></td>
+                <td>{{ entity.code }}</td>
+                <td>{{ entity.alpha2 }}</td>
+                <td>{{ entity.alpha3 }}</td>
+                <td>{{ entity.nomEnGb }}</td>
+                <td>{{ entity.nomFrFr }}</td>
+                <td>
+                <ul>
+                    <li>
+                        <a href="{{ path('pays_show', { 'id': entity.id }) }}">show</a>
+                    </li>
+                    <li>
+                        <a href="{{ path('pays_edit', { 'id': entity.id }) }}">edit</a>
+                    </li>
+                </ul>
+                </td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+
+        <ul>
+        <li>
+            <a href="{{ path('pays_new') }}">
+                Create a new entry
+            </a>
+        </li>
+    </ul>
+    {% endblock %}

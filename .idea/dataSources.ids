@@ -1,0 +1,127 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<component name="dataSourceStorage">
+  <data-source name="Nadsom - adresses@nasdom" uuid="4997564e-43a8-40dd-bbc7-007ac504b144">
+    <database-info product="MySQL" version="5.5.44-MariaDB-log" jdbc-version="4.0" driver-name="MySQL Connector Java" driver-version="mysql-connector-java-5.1.35 ( Revision: 5fb9c5849535c13917c2cf9baaece6ef9693ef27 )">
+      <extra-name-characters>#@</extra-name-characters>
+      <identifier-quote-string>`</identifier-quote-string>
+    </database-info>
+    <case-sensitivity plain-identifiers="exact" quoted-identifiers="exact"/>
+    <schema name="" catalog="adresses"/>
+    <table name="adresse" schema="" catalog="adresses" type="TABLE">
+      <column name="id" sqlType="INT" precision="10" scale="0" nullable="false" jdbcType="4" autoIncrement="true"/>
+      <column name="voie_id" sqlType="INT" precision="10" scale="0" nullable="false" jdbcType="4" def="MA=="/>
+      <column name="ville_id" sqlType="INT" precision="10" scale="0" nullable="false" jdbcType="4" def="MA=="/>
+      <column name="pays_id" sqlType="INT" precision="10" scale="0" nullable="false" jdbcType="4" def="MA=="/>
+      <column name="point_remise" sqlType="VARCHAR" precision="50" scale="0" nullable="false" jdbcType="12" def="JzAn" remarks="TGUgcG9pbnQgZGUgcmVtaXNlIGNvcnJlc3BvbmQgw6AgdW5lIGxvY2FsaXNhdGlvbiDDoCBsJ2ludMOpcmlldXIgZCd1biBiw6J0aW1lbnQgKG51bcOpcm8gZGUgbCdhcHBhcnRlbWVudCwgw6l0YWdlLCBlc2NhbGllciwgZXRjLiku"/>
+      <column name="complement" sqlType="VARCHAR" precision="50" scale="0" nullable="false" jdbcType="12" def="JzAn" remarks="TGUgY29tcGzDqW1lbnQgY29ycmVzcG9uZCDDoCBkZXMgw6lsw6ltZW50cyBzaXR1w6lzIMOgIGwnZXh0w6lyaWV1ciBkdSBiw6J0aW1lbnQgcXVpIHBlcm1ldHRlbnQgZGUgY29tcGzDqXRlciBsJ2FkcmVzc2UgKHLDqXNpZGVuY2UsIGLDonRpbWVudCwgZW50csOpZSwgZXRjLiku"/>
+      <column name="numero_voie" sqlType="INT" precision="10" scale="0" nullable="false" jdbcType="4" def="MA=="/>
+      <column name="extension" sqlType="VARCHAR" precision="6" scale="0" nullable="false" jdbcType="12" def="JzAn" remarks="YmlzLHRlcixxdWF0ZXIuLi4="/>
+      <column name="nom_voie" sqlType="VARCHAR" precision="255" scale="0" nullable="false" jdbcType="12" def="JzAn"/>
+      <column name="lieu_dit" sqlType="VARCHAR" precision="255" scale="0" nullable="false" jdbcType="12" def="JzAn"/>
+      <column name="mention_distribution" sqlType="VARCHAR" precision="255" scale="0" nullable="false" jdbcType="12" def="JzAn"/>
+      <column name="cedex" sqlType="VARCHAR" precision="12" scale="0" nullable="false" jdbcType="12" def="JzAn"/>
+      <column name="lib_bureau_cedex" sqlType="VARCHAR" precision="255" scale="0" nullable="false" jdbcType="12" def="JzAn"/>
+      <column name="division_territoriale" sqlType="VARCHAR" precision="5" scale="0" nullable="false" jdbcType="12" def="JzAn"/>
+      <primary-key name="PRIMARY" columns="id"/>
+      <foreign-key name="FK_adresse_voie" columns="voie_id" ref-table="voie" ref-schema="" ref-catalog="adresses" ref-columns="id" update-rule="3" delete-rule="3" deferrability="2"/>
+      <foreign-key name="FK_adresse_ville" columns="ville_id" ref-table="ville" ref-schema="" ref-catalog="adresses" ref-columns="id" update-rule="3" delete-rule="3" deferrability="2"/>
+      <foreign-key name="FK_adresse_pays" columns="pays_id" ref-table="pays" ref-schema="" ref-catalog="adresses" ref-columns="id" update-rule="3" delete-rule="3" deferrability="2"/>
+      <exported-key name="FK_individu_adresse_adresse" table="individu_adresse" schema="" catalog="adresses" columns="adresse_id"/>
+      <index name="FK_adresse_pays" unique="false" columns="pays_id"/>
+      <index name="FK_adresse_ville" unique="false" columns="ville_id"/>
+      <index name="FK_adresse_voie" unique="false" columns="voie_id"/>
+    </table>
+    <table name="departement" schema="" catalog="adresses" type="TABLE">
+      <column name="id" sqlType="INT" precision="10" scale="0" nullable="false" jdbcType="4" autoIncrement="true"/>
+      <column name="code" sqlType="VARCHAR" precision="3" scale="0" nullable="true" jdbcType="12" remarks="Q29kZSBkdSBkw6lwYXJ0ZW1lbnQ="/>
+      <column name="nom" sqlType="VARCHAR" precision="255" scale="0" nullable="true" jdbcType="12" remarks="Tm9tIGR1IGTDqXBhcnRlbWVudA=="/>
+      <column name="nom_uppercase" sqlType="VARCHAR" precision="255" scale="0" nullable="true" jdbcType="12" remarks="Tm9tIGR1IGTDqXBhcnRlbWVudCBlbiBtYWp1c2N1bGU="/>
+      <column name="slug" sqlType="VARCHAR" precision="255" scale="0" nullable="true" jdbcType="12" remarks="Tm9tIGR1IGTDqXBhcnRlbWVudCDDqXB1csOpIHBvdXIgcG91dm9pciDDqnRyZSB1dGlsaXPDqSBkYW5zIHVuZSBVUkw="/>
+      <column name="nom_soundex" sqlType="VARCHAR" precision="20" scale="0" nullable="true" jdbcType="12" remarks="VmFsZXVyIFNPVU5ERVgoKSBkdSBub20gZHUgZMOpcGFydGVtZW50Lg=="/>
+      <primary-key name="PRIMARY" columns="id"/>
+      <index name="code" unique="false" columns="code"/>
+      <index name="nom_soundex" unique="false" columns="nom_soundex"/>
+      <index name="slug" unique="false" columns="slug"/>
+    </table>
+    <table name="individu" schema="" catalog="adresses" type="TABLE">
+      <column name="id" sqlType="INT" precision="10" scale="0" nullable="false" jdbcType="4" autoIncrement="true"/>
+      <column name="nom" sqlType="VARCHAR" precision="55" scale="0" nullable="true" jdbcType="12"/>
+      <column name="prenom" sqlType="VARCHAR" precision="55" scale="0" nullable="true" jdbcType="12"/>
+      <column name="email" sqlType="VARCHAR" precision="55" scale="0" nullable="true" jdbcType="12"/>
+      <primary-key name="PRIMARY" columns="id"/>
+      <exported-key name="FK_individu_adresse_individu" table="individu_adresse" schema="" catalog="adresses" columns="individu_id"/>
+    </table>
+    <table name="individu_adresse" schema="" catalog="adresses" type="TABLE">
+      <column name="adresse_id" sqlType="INT" precision="10" scale="0" nullable="false" jdbcType="4"/>
+      <column name="individu_id" sqlType="INT" precision="10" scale="0" nullable="false" jdbcType="4"/>
+      <primary-key name="PRIMARY" columns="adresse_id,individu_id"/>
+      <foreign-key name="FK_individu_adresse_individu" columns="individu_id" ref-table="individu" ref-schema="" ref-catalog="adresses" ref-columns="id" update-rule="3" delete-rule="3" deferrability="2"/>
+      <foreign-key name="FK_individu_adresse_adresse" columns="adresse_id" ref-table="adresse" ref-schema="" ref-catalog="adresses" ref-columns="id" update-rule="3" delete-rule="3" deferrability="2"/>
+      <index name="FK_individu_adresse_individu" unique="false" columns="individu_id"/>
+    </table>
+    <table name="pays" schema="" catalog="adresses" type="TABLE">
+      <column name="id" sqlType="INT" precision="10" scale="0" nullable="false" jdbcType="4" autoIncrement="true"/>
+      <column name="code" sqlType="INT" precision="10" scale="0" nullable="false" jdbcType="4" remarks="Q29kZSBJU08gMzE2Ni0xIG51bcOpcmlxdWUg"/>
+      <column name="alpha2" sqlType="VARCHAR" precision="2" scale="0" nullable="false" jdbcType="12" remarks="Q29kZSBJU08gMzE2Ni0xIGFscGhhMg=="/>
+      <column name="alpha3" sqlType="VARCHAR" precision="3" scale="0" nullable="false" jdbcType="12" remarks="Q29kZSBJU08gMzE2Ni0xIGFscGhhMw=="/>
+      <column name="nom_en_gb" sqlType="VARCHAR" precision="45" scale="0" nullable="true" jdbcType="12" remarks="Tm9tIEFuZ2xhaXM="/>
+      <column name="nom_fr_fr" sqlType="VARCHAR" precision="45" scale="0" nullable="false" jdbcType="12" remarks="Tm9tIEZyYW5jYWlz"/>
+      <primary-key name="PRIMARY" columns="id"/>
+      <exported-key name="FK_adresse_pays" table="adresse" schema="" catalog="adresses" columns="pays_id"/>
+      <index name="alpha2" unique="true" columns="alpha2"/>
+      <index name="alpha3" unique="true" columns="alpha3"/>
+      <index name="code_unique" unique="true" columns="code"/>
+      <index name="nom_fr_unique" unique="true" columns="nom_fr_fr"/>
+    </table>
+    <table name="ville" schema="" catalog="adresses" type="TABLE">
+      <column name="id" sqlType="INT" precision="10" scale="0" nullable="false" jdbcType="4" autoIncrement="true"/>
+      <column name="departement" sqlType="VARCHAR" precision="3" scale="0" nullable="true" jdbcType="12"/>
+      <column name="slug" sqlType="VARCHAR" precision="255" scale="0" nullable="true" jdbcType="12"/>
+      <column name="nom" sqlType="VARCHAR" precision="45" scale="0" nullable="true" jdbcType="12"/>
+      <column name="nom_simple" sqlType="VARCHAR" precision="45" scale="0" nullable="true" jdbcType="12"/>
+      <column name="nom_reel" sqlType="VARCHAR" precision="45" scale="0" nullable="true" jdbcType="12"/>
+      <column name="nom_soundex" sqlType="VARCHAR" precision="20" scale="0" nullable="true" jdbcType="12"/>
+      <column name="nom_metaphone" sqlType="VARCHAR" precision="22" scale="0" nullable="true" jdbcType="12"/>
+      <column name="code_postal" sqlType="VARCHAR" precision="5" scale="0" nullable="true" jdbcType="12"/>
+      <column name="commune" sqlType="VARCHAR" precision="3" scale="0" nullable="true" jdbcType="12"/>
+      <column name="code_commune" sqlType="VARCHAR" precision="5" scale="0" nullable="true" jdbcType="12"/>
+      <column name="arrondissement" sqlType="SMALLINT UNSIGNED" precision="5" scale="0" nullable="true" jdbcType="5"/>
+      <column name="canton" sqlType="VARCHAR" precision="4" scale="0" nullable="true" jdbcType="12"/>
+      <column name="amdi" sqlType="SMALLINT UNSIGNED" precision="5" scale="0" nullable="true" jdbcType="5"/>
+      <column name="population_2010" sqlType="MEDIUMINT UNSIGNED" precision="8" scale="0" nullable="true" jdbcType="4"/>
+      <column name="population_1999" sqlType="MEDIUMINT UNSIGNED" precision="8" scale="0" nullable="true" jdbcType="4"/>
+      <column name="population_2012" sqlType="MEDIUMINT UNSIGNED" precision="8" scale="0" nullable="true" jdbcType="4" remarks="YXBwcm94aW1hdGlm"/>
+      <column name="densite_2010" sqlType="INT" precision="10" scale="0" nullable="true" jdbcType="4"/>
+      <column name="surface" sqlType="FLOAT" precision="12" scale="0" nullable="true" jdbcType="7"/>
+      <column name="longitude_deg" sqlType="FLOAT" precision="12" scale="0" nullable="true" jdbcType="7"/>
+      <column name="latitude_deg" sqlType="FLOAT" precision="12" scale="0" nullable="true" jdbcType="7"/>
+      <column name="longitude_grd" sqlType="VARCHAR" precision="9" scale="0" nullable="true" jdbcType="12"/>
+      <column name="latitude_grd" sqlType="VARCHAR" precision="8" scale="0" nullable="true" jdbcType="12"/>
+      <column name="longitude_dms" sqlType="VARCHAR" precision="9" scale="0" nullable="true" jdbcType="12"/>
+      <column name="latitude_dms" sqlType="VARCHAR" precision="8" scale="0" nullable="true" jdbcType="12"/>
+      <column name="zmin" sqlType="MEDIUMINT" precision="7" scale="0" nullable="true" jdbcType="4"/>
+      <column name="zmax" sqlType="MEDIUMINT" precision="7" scale="0" nullable="true" jdbcType="4"/>
+      <primary-key name="PRIMARY" columns="id"/>
+      <exported-key name="FK_adresse_ville" table="adresse" schema="" catalog="adresses" columns="ville_id"/>
+      <index name="code_commune_2" unique="true" columns="code_commune"/>
+      <index name="slug" unique="true" columns="slug"/>
+      <index name="code_commune" unique="false" columns="code_commune"/>
+      <index name="code_postal" unique="false" columns="code_postal"/>
+      <index name="departement" unique="false" columns="departement"/>
+      <index name="longitude_latitude_deg" unique="false" columns="longitude_deg,latitude_deg"/>
+      <index name="nom" unique="false" columns="nom"/>
+      <index name="nom_metaphone" unique="false" columns="nom_metaphone"/>
+      <index name="nom_reel" unique="false" columns="nom_reel"/>
+      <index name="nom_simple" unique="false" columns="nom_simple"/>
+      <index name="nom_soundex" unique="false" columns="nom_soundex"/>
+      <index name="population_2010" unique="false" columns="population_2010"/>
+    </table>
+    <table name="voie" schema="" catalog="adresses" type="TABLE">
+      <column name="id" sqlType="INT" precision="10" scale="0" nullable="false" jdbcType="4" autoIncrement="true"/>
+      <column name="lib_voie" sqlType="VARCHAR" precision="50" scale="0" nullable="true" jdbcType="12"/>
+      <column name="abreviation_voie" sqlType="VARCHAR" precision="10" scale="0" nullable="true" jdbcType="12"/>
+      <primary-key name="PRIMARY" columns="id"/>
+      <exported-key name="FK_adresse_voie" table="adresse" schema="" catalog="adresses" columns="voie_id"/>
+    </table>
+  </data-source>
+</component>

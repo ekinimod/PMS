@@ -1,0 +1,23 @@
+domi_adresse_pays:
+    resource: "@DomiAdresseBundle/Resources/config/routing/pays.yml"
+    prefix:   /pays
+
+domi_adresse_voie:
+    resource: "@DomiAdresseBundle/Resources/config/routing/voie.yml"
+    prefix:   /voie
+
+domi_adresse_ville:
+    resource: "@DomiAdresseBundle/Resources/config/routing/ville.yml"
+    prefix:   /ville
+
+domi_adresse_individu:
+    resource: "@DomiAdresseBundle/Resources/config/routing/individu.yml"
+    prefix:   /individu
+
+domi_adresse_departement:
+    resource: "@DomiAdresseBundle/Resources/config/routing/departement.yml"
+    prefix:   /departement
+
+domi_adresse_adresse:
+    resource: "@DomiAdresseBundle/Resources/config/routing/adresse.yml"
+    prefix:   /adresse

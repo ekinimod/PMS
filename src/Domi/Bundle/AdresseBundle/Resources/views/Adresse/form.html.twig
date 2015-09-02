@@ -1,0 +1,21 @@
+{% extends "::base.html.twig" %}
+{% set title='Adresses' %}
+{% set titre='Adresses' %}
+{% set soustitre='Formulaire.' %}
+
+
+ {% block body %}
+     <BR><BR>
+
+     {% use "bootstrap_3_layout.html.twig" %}
+     {{ form_start(form, {'class': 'form-horizontal', 'method': 'POST', 'attr': {'class': 'form-inline','novalidate': 'novalidate'}}) }}
+     {{ form_widget(form) }}
+     {{ form_end(form) }}
+
+     <ul>
+         <li><a href="/adresse/new">Nouvelle {{titre  }}(src/Domi/Bundle/AdresseBundle/Resources/views/Adresse/form.html.twig:16)</a></li>
+         <li><a href="/adresse">Retour Liste des {{titre  }}(src/Domi/Bundle/AdresseBundle/Resources/views/Adresse/form.html.twig:16)</a></li>
+     </ul>
+
+
+ {% endblock %}

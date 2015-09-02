@@ -1,0 +1,57 @@
+{% extends '::base.html.twig' %}
+{% set title='Adresse' %}
+{% set titre='Adresse' %}
+{% set soustitre='Liste Adresse' %}
+
+
+{% set directionParam = entities.getPaginatorOption('sortDirectionParameterName') %}
+{% set params = entities.getParams() %}
+{% set direction = params[directionParam] is defined ? params[directionParam] : null %}
+
+{% block body -%}
+        <table class="table table-condensed table-hover ">
+        {#<table class="records_list">#}
+        <thead>
+        <tr>
+            <th></th>
+            <th {% if entities.isSorted('p.complement') %} class={{ direction }}{% endif %}>{{ knp_pagination_sortable(entities, 'Complement', 'p.complement') }}</th>
+            <th {% if entities.isSorted('p.numeroVoie') %} class={{ direction }}{% endif %}>{{ knp_pagination_sortable(entities, 'numeroVoie', 'p.numeroVoie') }}</th>
+            <th></th>
+            <th></th>
+            <th></th>
+            <th></th>
+        </tr>
+        </thead>
+        <tbody>
+        {% for entity in entities %}
+            <tr>
+                <td><a href="{{ path('adresse_show', { 'id': entity.id }) }}">{{ entity.id }}</a></td>
+                <td>{{ entity.pointRemise }}<BR>{{ entity.complement }}</td>
+                <td>{{ entity.numeroVoie }}<BR>{{ entity.extension }}<BR>{{ entity.nomVoie }}</td>
+                <td>{{ entity.lieuDit }}</td>
+                <td>{{ entity.mentionDistribution }}<BR>{{ entity.cedex }}<BR>{{ entity.libBureauCedex }}</td>
+                <td>{{ entity.divisionTerritoriale }}</td>
+                <td><a href="{{ path('adresse_show', { 'id': entity.id }) }}">show</a>
+                    <BR><a href="{{ path('adresse_edit', { 'id': entity.id }) }}">edit</a></td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+
+    {# display navigation #}
+    <div class="navigation">
+        {{ knp_pagination_render(entities) }}
+    </div>
+    {# total items count #}
+    <div class="count">
+        Nbre total : {{ entities.getTotalItemCount }}.
+    </div>
+
+    <ul>
+        <li>
+            <a href="{{ path('adresse_new') }}">
+                Create a new entry (src/Domi/Bundle/AdresseBundle/Resources/views/Adresse/index.html.twig:53)
+            </a>
+        </li>
+    </ul>
+{% endblock %}

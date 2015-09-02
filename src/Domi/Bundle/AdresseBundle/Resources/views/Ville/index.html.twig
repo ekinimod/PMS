@@ -1,0 +1,106 @@
+{% extends '::base.html.twig' %}
+{% set title='Ville' %}
+{% set titre='Ville' %}
+{% set soustitre='Liste Ville' %}
+
+{% set directionParam = entities.getPaginatorOption('sortDirectionParameterName') %}
+{% set params = entities.getParams() %}
+{% set direction = params[directionParam] is defined ? params[directionParam] : null %}
+
+{% block body -%}
+
+    <table class="records_list">
+        <thead>
+            <tr>
+                <th>Id</th>
+                <th>Departement</th>
+                <th>Slug</th>
+                <th>Nom</th>
+                <th>Nomsimple</th>
+                <th>Nomreel</th>
+                <th>Nomsoundex</th>
+                <th>Nommetaphone</th>
+                <th>Codepostal</th>
+                <th>Commune</th>
+                <th>Codecommune</th>
+                <th>Arrondissement</th>
+                <th>Canton</th>
+                <th>Amdi</th>
+                <th>Population2010</th>
+                <th>Population1999</th>
+                <th>Population2012</th>
+                <th>Densite2010</th>
+                <th>Surface</th>
+                <th>Longitudedeg</th>
+                <th>Latitudedeg</th>
+                <th>Longitudegrd</th>
+                <th>Latitudegrd</th>
+                <th>Longitudedms</th>
+                <th>Latitudedms</th>
+                <th>Zmin</th>
+                <th>Zmax</th>
+                <th>Actions</th>
+            </tr>
+        </thead>
+        <tbody>
+        {% for entity in entities %}
+            <tr>
+                <td><a href="{{ path('ville_show', { 'id': entity.id }) }}">{{ entity.id }}</a></td>
+                <td>{{ entity.departement }}</td>
+                <td>{{ entity.slug }}</td>
+                <td>{{ entity.nom }}</td>
+                <td>{{ entity.nomSimple }}</td>
+                <td>{{ entity.nomReel }}</td>
+                <td>{{ entity.nomSoundex }}</td>
+                <td>{{ entity.nomMetaphone }}</td>
+                <td>{{ entity.codePostal }}</td>
+                <td>{{ entity.commune }}</td>
+                <td>{{ entity.codeCommune }}</td>
+                <td>{{ entity.arrondissement }}</td>
+                <td>{{ entity.canton }}</td>
+                <td>{{ entity.amdi }}</td>
+                <td>{{ entity.population2010 }}</td>
+                <td>{{ entity.population1999 }}</td>
+                <td>{{ entity.population2012 }}</td>
+                <td>{{ entity.densite2010 }}</td>
+                <td>{{ entity.surface }}</td>
+                <td>{{ entity.longitudeDeg }}</td>
+                <td>{{ entity.latitudeDeg }}</td>
+                <td>{{ entity.longitudeGrd }}</td>
+                <td>{{ entity.latitudeGrd }}</td>
+                <td>{{ entity.longitudeDms }}</td>
+                <td>{{ entity.latitudeDms }}</td>
+                <td>{{ entity.zmin }}</td>
+                <td>{{ entity.zmax }}</td>
+                <td>
+                <ul>
+                    <li>
+                        <a href="{{ path('ville_show', { 'id': entity.id }) }}">show</a>
+                    </li>
+                    <li>
+                        <a href="{{ path('ville_edit', { 'id': entity.id }) }}">edit</a>
+                    </li>
+                </ul>
+                </td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+
+    {# display navigation #}
+    <div class="navigation">
+        {{ knp_pagination_render(entities) }}
+    </div>
+    {# total items count #}
+    <div class="count">
+        Nbre total : {{ entities.getTotalItemCount }}.
+    </div>
+
+    <ul>
+        <li>
+            <a href="{{ path('ville_new') }}">
+                Create a new entry
+            </a>
+        </li>
+    </ul>
+    {% endblock %}

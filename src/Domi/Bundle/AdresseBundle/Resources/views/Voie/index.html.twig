@@ -1,0 +1,58 @@
+{% extends '::base.html.twig' %}
+{% set title='Voie' %}
+{% set titre='Voie' %}
+{% set soustitre='Liste Voie' %}
+
+{% set directionParam = entities.getPaginatorOption('sortDirectionParameterName') %}
+{% set params = entities.getParams() %}
+{% set direction = params[directionParam] is defined ? params[directionParam] : null %}
+
+{% block body -%}
+
+    <table class="records_list">
+        <thead>
+            <tr>
+                <th>Id</th>
+                <th>Libvoie</th>
+                <th>Abreviationvoie</th>
+                <th>Actions</th>
+            </tr>
+        </thead>
+        <tbody>
+        {% for entity in entities %}
+            <tr>
+                <td><a href="{{ path('voie_show', { 'id': entity.id }) }}">{{ entity.id }}</a></td>
+                <td>{{ entity.libVoie }}</td>
+                <td>{{ entity.abreviationVoie }}</td>
+                <td>
+                <ul>
+                    <li>
+                        <a href="{{ path('voie_show', { 'id': entity.id }) }}">show</a>
+                    </li>
+                    <li>
+                        <a href="{{ path('voie_edit', { 'id': entity.id }) }}">edit</a>
+                    </li>
+                </ul>
+                </td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+
+    {# display navigation #}
+    <div class="navigation">
+        {{ knp_pagination_render(entities) }}
+    </div>
+    {# total items count #}
+    <div class="count">
+        Nbre total : {{ entities.getTotalItemCount }}.
+    </div>
+
+    <ul>
+        <li>
+            <a href="{{ path('voie_new') }}">
+                Create a new entry
+            </a>
+        </li>
+    </ul>
+    {% endblock %}

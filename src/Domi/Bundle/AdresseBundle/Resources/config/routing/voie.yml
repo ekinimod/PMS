@@ -1,0 +1,32 @@
+voie:
+    path:     /{page}
+    defaults: { _controller: "DomiAdresseBundle:Voie:index",page:1 }
+    requirements:
+      page:  \d+
+
+voie_show:
+    path:     /show/{id}
+    defaults: { _controller: "DomiAdresseBundle:Voie:show" }
+
+voie_new:
+    path:     /new
+    defaults: { _controller: "DomiAdresseBundle:Voie:new" }
+
+voie_create:
+    path:     /create
+    defaults: { _controller: "DomiAdresseBundle:Voie:create" }
+    methods:  POST
+
+voie_edit:
+    path:     /edit/{id}
+    defaults: { _controller: "DomiAdresseBundle:Voie:edit" }
+
+voie_update:
+    path:     /update/{id}
+    defaults: { _controller: "DomiAdresseBundle:Voie:update" }
+    methods:  [POST, PUT]
+
+voie_delete:
+    path:     /delete/{id}
+    defaults: { _controller: "DomiAdresseBundle:Voie:delete" }
+    methods:  [POST, DELETE]

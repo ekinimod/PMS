@@ -1,0 +1,205 @@
+/*@brand-primary: #ff8040;*/
+/*@font-family-base: @font-family-monospace;*/
+@charset "utf-8";
+
+/* --- CSS Reset --- */
+
+.grid-m1 {
+    float: left;
+    width: 1.25%;
+    height: 1px;
+}
+
+.grid-c1 {
+    float: left;
+    width: 31.67%;
+}
+
+.grid-m2 {
+    float: left;
+    width: 1.25%;
+    height: 1px;
+}
+
+.grid-c2 {
+    float: left;
+    width: 31.67%;
+}
+
+.grid-m3 {
+    float: left;
+    width: 1.25%;
+    height: 1px;
+}
+
+.grid-c3 {
+    float: left;
+    width: 31.67%;
+}
+/* --- Typography --- */
+
+
+body {
+    font-family: "Comic Sans MS", cursive;
+    margin: 0;
+    margin-top: 170px;
+    margin-left: 60px;
+    padding: 0;
+    color: #000;
+    background: #FFFFe9;
+}
+th.asc:before{
+    font-family: "Glyphicons Halflings";
+    content: "\E151";
+    /*background: #1eae30;*/
+}
+th.desc:before{
+    font-family: "Glyphicons Halflings";
+    content: "\E152";
+    /*background: #ac2925;*/
+
+}
+.grad {
+  background: -webkit-linear-gradient(#F5C314, #FFFFE9); /* For Safari 5.1 to 6.0 */
+  background: -o-linear-gradient(#F5C314, #FFFFE9); /* For Opera 11.1 to 12.0 */
+  background: -moz-linear-gradient(#F5C314, #FFFFE9); /* For Firefox 3.6 to 15 */
+  background: linear-gradient(#F5C314, #FFFFE9); /* Standard syntax */
+} 
+
+.breadcrumb {
+  padding-left: 10px;
+  padding-top: 1px;
+  padding-right: 1px;
+  padding-bottom: 1px;
+  margin-bottom: 8px;
+  list-style: none;
+  background-color: #f5f5f5;
+  border-radius: 7px;
+}
+.header h1 h2{
+	float: left;
+	left: 150px;
+	width: 60%;
+	margin-right: 20%;
+	}
+.header .logo{
+	float: left;
+	left: 150px;
+	width: 150px;
+	margin-top: -100px;
+	margin-left: 20%;
+	}
+
+.breadcrumb > li {
+  display: inline-block;
+}
+
+.breadcrumb > li + li:before {
+  padding: 0 1px;
+  color: #cccccc;
+  content: "/\00a0";
+}
+
+.breadcrumb > .active {
+  color: #999999;
+}
+@media (min-width: 768px) {
+	 .navbar {
+	    min-height: 15px;
+	    margin-bottom: 1px;
+	    border: 1px solid transparent;
+	}
+	.navbar-brand {
+	  position: absolute;
+	    left: 10px;
+	}
+	.navbar-nav {
+	 margin-left: 65px;
+	}
+	.navbar-brand >h1{
+	    font-size: 36px;
+	     text-shadow: 5px 5px 5px #5c5b36;
+	     word-wrap: break-word;
+	     margin-left: 130px;
+	}
+	.navbar-nav > li > a{
+	padding: 5px;}
+}
+@media (min-width: 992px) {
+	.navbar {
+	    min-height: 15px;
+	    margin-bottom: 20px;
+	    border: 1px solid transparent;
+	}
+	.navbar-brand {
+	  position: absolute;
+	    left: 10px;
+	}
+	.navbar-nav {
+	 margin-left: 65px;
+	}
+	.navbar-brand >h1{
+	    font-size: 32px;
+	     text-shadow: 5px 5px 5px #5c5b36;
+	     word-wrap: break-word;
+	     margin-left: 130px;
+	}
+}
+@media (min-width: 1200px) {
+	 .navbar {
+	    min-height: 15px;
+	    margin-bottom: 0px;
+	    border: 1px solid transparent;
+	}
+	.navbar-brand {
+	  position: absolute;
+	    left: 40px;
+	}
+	.navbar-nav {
+	 margin-left: 65px;
+	}
+	.navbar-brand >h1{
+	    font-size: 36px;
+	     text-shadow: 5px 5px 5px #5c5b36;
+	     word-wrap: break-word;
+	     margin-left: 480px;
+	}
+  }
+
+
+.zf-green {
+    color: #1eae30;
+}
+
+.btn-success {
+  color: #616161;
+  border-color: #ff8080;
+  background-color: #b89107;
+  background-image: -moz-linear-gradient(top, #FFFFE9, #F5C314);
+  background-image: -ms-linear-gradient(top, #FFFFE9, #F5C314);
+  background-image: -webkit-gradient(linear, 0 0, 0 100%, from(#FFFFE9), to(#F5C314));
+  background-image: -webkit-linear-gradient(top, #FFFFE9, #F5C314);
+  background-image: -o-linear-gradient(top, #FFFFE9, #F5C314);
+  background-image: linear-gradient(top, #FFFFE9, #F5C314);
+  filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#FFFFE9', endColorstr='#F5C314', GradientType=0);
+}
+
+.btn-success:hover,
+.btn-success:active,
+.btn-success.active,
+.btn-success.disabled,
+.btn-success[disabled] {
+	color: #000;
+  background-color: #F5C314;
+  border-color: #ff0000;
+}
+
+.btn-success:active, .btn-success.active {
+  background-color: #F5C314;
+}
+
+div.container a.brand {
+    background: url("../img/gaujal.net.png") no-repeat scroll 0 10px transparent;
+    margin-left: 0;
+    padding: 8px 20px 12px 40px;
+}

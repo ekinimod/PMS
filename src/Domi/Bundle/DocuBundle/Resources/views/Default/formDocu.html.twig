@@ -1,0 +1,57 @@
+{% extends "::base.html.twig" %}
+{% set title='Documents' %}
+{% set titre='Documents' %}
+{% set soustitre='Formulaire' %}
+
+
+ {% block body %}
+
+     <BR><BR>
+
+     {% use "form_table_layout.html.twig" %}
+         {{ form_start(form, {'class': 'form-horizontal', 'method': 'POST', 'attr': {'class': 'form-inline','novalidate': 'novalidate'}}) }}
+
+     {{ form_label(form.titre) }}
+         {{ form_errors(form.titre) }}
+         {{ form_widget(form.titre) }}
+
+         {{ form_label(form.soustitre) }}
+         {{ form_errors(form.soustitre) }}
+         {{ form_widget(form.soustitre) }}
+
+         {{ form_label(form.contenu) }}
+         {{ form_errors(form.contenu) }}
+         {{ form_widget(form.contenu) }}
+     <div class="row">
+     <div class="col-xs-1">
+         {{ form_label(form.note) }}
+         {{ form_errors(form.note) }}
+         {{ form_widget(form.note, {'attr': {'class':'form-control','maxlength':'1','placeholder': 'Entre une note'}}) }}
+     </div>
+     </div>
+     <br>
+         {{ form_label(form.docPere) }}
+         {{ form_errors(form.docPere) }}
+         {{ form_widget(form.docPere) }}
+
+         {{ form_label(form.docSuivant) }}
+         {{ form_errors(form.docSuivant) }}
+         {{ form_widget(form.docSuivant) }}
+
+         {{ form_label(form.docPrecedent) }}
+         {{ form_errors(form.docPrecedent) }}
+         {{ form_widget(form.docPrecedent) }}
+<br>
+         {#Génération auto du formulaire#}
+         {#{{ form(form) }}#}
+         {{ form_end(form) }}
+<br>
+</table>
+
+     <ul>
+         <li><a href="/new/docu">Nouveau</a></li>
+         <li><a href="/liste/docu">Retour Liste des docus</a></li>
+     </ul>
+
+
+ {% endblock %}

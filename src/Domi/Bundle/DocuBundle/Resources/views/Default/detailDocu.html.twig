@@ -1,0 +1,61 @@
+{% extends "::base.html.twig" %}
+{% set title='Docu' %}
+{% set titre='Docu' %}
+{% set soustitre='Détail document' %}
+
+
+ {% block body %}
+     <BR><BR>
+
+     <h2>
+         ({{ leDocu.id }}) - {{ leDocu.titre |upper }}
+     </h2>
+     <p>{{ leDocu.contenu|slice(0,125) }}...</p>
+
+
+
+
+     <table>
+         <tr>
+             <td>Père :</td>
+             <td>
+                 {% if leDocu.docPere is not empty %}
+                     <a href="/detail/docu/{{ leDocu.docPere.id }}">
+                         {{ leDocu.docPere.titre }}
+                     </a>
+                 {% endif %}
+                 {% if leDocu.docPere is empty %}
+                     &nbsp;-&nbsp;
+                 {% endif %}
+             </td>
+             <td>Précédent :</td>
+             <td>
+                 {% if leDocu.docPrecedent is not empty %}
+                     <a href="/detail/docu/{{ leDocu.docPrecedent.id }}">
+                         {{ leDocu.docPrecedent.titre }}
+                     </a>
+                 {% endif %}
+                 {% if leDocu.docPrecedent is empty %}
+                     &nbsp;-&nbsp;
+                 {% endif %}
+             </td>
+             <td>Suivant :</td>
+             <td>
+                 {% if leDocu.docSuivant is not empty %}
+                     <a href="/detail/docu/{{ leDocu.docSuivant.id }}">
+                         {{ leDocu.docSuivant.titre }}
+                     </a>
+                 {% endif %}
+                 {% if leDocu.docSuivant is empty %}
+                     &nbsp;-&nbsp;
+                 {% endif %}
+             </td>
+
+
+         </tr>
+     </table>
+     <p>
+         <a href="/liste/docu">Retour Liste des docus</a></p>
+
+
+ {% endblock %}

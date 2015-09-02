@@ -1,0 +1,124 @@
+{% extends '::base.html.twig' %}
+
+{% block body %}
+    <h1>Modification Film</h1>
+
+    {{ form_start(data) }}
+    {{ form_errors(data) }}
+    <div class="container-fluid">
+        <div class="panel panel-default">
+            <div class="panel-heading">
+                <div class="row">
+                    <div class="col-md-2"></div>
+                    <div class="col-md-8">
+                        {{ form_label(data.titre) }}
+                        {{ form_errors(data.titre) }}
+                        {{ form_widget(data.titre) }}
+                    </div>
+                    <div class="col-md-2"></div>
+                </div>
+            </div>
+            <div class="panel-body">
+                <div class="row">
+                    <div class="col-md-2"></div>
+                    <div class="col-md-8">
+                        {{ form_label(data.description) }}
+                        {{ form_errors(data.description) }}
+                        {{ form_widget(data.description) }}
+                    </div>
+                    <div class="col-md-2"></div>
+                </div>
+            </div>
+
+            <div class="row">
+                <div class="col-md-2"></div>
+                <div class="col-md-8">
+                    {{ form_label(data.libelle) }}
+                    {{ form_errors(data.libelle) }}
+                    {{ form_widget(data.libelle) }}
+                </div>
+                <div class="col-md-2"></div>
+            </div>
+
+
+            <div class="row">
+                <div class="col-md-3"></div>
+                <div class="col-md-2">
+                    {{ form_label(data.langue) }}
+                    {{ form_errors(data.langue) }}
+                    {{ form_widget(data.langue) }}
+                </div>
+                <div class="col-md-2">
+                    {{ form_label(data.notefilm) }}
+                    {{ form_errors(data.notefilm) }}
+                    {{ form_widget(data.notefilm) }}
+                </div>
+                <div class="col-md-2">
+                    {{ form_label(data.notevideo) }}
+                    {{ form_errors(data.notevideo) }}
+                    {{ form_widget(data.notevideo) }}
+                </div>
+                <div class="col-md-3"></div>
+            </div>
+            <div class="row">
+                <div class="col-md-3"></div>
+                <div class="col-md-2">
+                    {{ form_label(data.genre) }}
+                    {{ form_errors(data.genre) }}
+                    {{ form_widget(data.genre) }}
+                </div>
+                <div class="col-md-2"></div>
+                <div class="col-md-2">
+                    {{ form_label(data.spectateur) }}
+                    {{ form_errors(data.spectateur) }}
+                    {{ form_widget(data.spectateur) }}
+                </div>
+                <div class="col-md-3"></div>
+            </div>
+
+            <div class="row">
+                <div class="col-md-3"></div>
+                <div class="col-md-2">
+                    {{ form_label(data.gravee) }}
+                    {{ form_errors(data.gravee) }}
+                    {{ form_widget(data.gravee) }}
+                </div>
+                <div class="col-md-2"></div>
+                <div class="col-md-2">
+                    {{ form_label(data.duree) }}
+                    {{ form_errors(data.duree) }}
+                    {{ form_widget(data.duree) }}
+                </div>
+
+                <div class="col-md-3"></div>
+            </div>
+            <div class="row">
+                <div class="col-md-3"></div>
+                <div class="col-md-2">
+                    {{ form_label(data.fichier) }}
+                    {{ form_errors(data.fichier) }}
+                    {{ form_widget(data.fichier) }}
+                </div>
+                <div class="col-md-2">
+                    {{ form_label(data.codec) }}
+                    {{ form_errors(data.codec) }}
+                    {{ form_widget(data.codec) }}
+                </div>
+                <div class="col-md-2">
+                    {{ form_label(data.image) }}
+                    {{ form_errors(data.image) }}
+                    {{ form_widget(data.image) }}
+                </div>
+                <div class="col-md-3"></div>
+            </div>
+            <hr>
+
+
+            {#{{ form_rest(data) }}#}
+            {% include 'DomiFilmBundle:Film:boutons.html.twig' %}
+        </div>
+    </div>
+    {#{{ dump() }}#}
+
+
+{% endblock %}

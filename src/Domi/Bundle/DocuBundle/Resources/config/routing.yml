@@ -1,0 +1,19 @@
+liste_docu:
+    path:   /liste/docu
+    defaults: { _controller: DomiDocuBundle:Default:listeDocu }
+
+detail_docu:
+    path:   /detail/docu/{id}
+    defaults: { _controller: DomiDocuBundle:Default:detailDocu }
+    requirements:
+          id: \d+
+
+new_docu:
+    path:   /new/docu
+    defaults: { _controller: DomiDocuBundle:Default:newDocu }
+
+edit_docu:
+    path:   /edit/docu/{id}
+    defaults: { _controller: DomiDocuBundle:Default:editDocu, id: 0 }
+    requirements:
+      id: \d+

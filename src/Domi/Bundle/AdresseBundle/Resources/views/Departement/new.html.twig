@@ -1,0 +1,17 @@
+{% extends '::base.html.twig' %}
+{% set title='Département' %}
+{% set titre='Département' %}
+{% set soustitre='Création Département' %}
+
+{% block body -%}
+
+    {{ form(form) }}
+
+        <ul class="record_actions">
+    <li>
+        <a href="{{ path('departement') }}">
+            Back to the list
+        </a>
+    </li>
+</ul>
+{% endblock %}

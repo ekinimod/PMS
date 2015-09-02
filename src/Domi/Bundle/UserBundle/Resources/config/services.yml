@@ -1,0 +1,10 @@
+services:
+#    domi_user.example:
+#        class: Domi\Bundle\UserBundle\Example
+#        arguments: [@service_id, "plain_value", %parameter%]
+  domi_user.registration.form.type:
+    class: Domi\Bundle\UserBundle\Form\Type\RegistrationFormType
+    arguments: [%fos_user.model.user.class%]
+    tags:
+        - { name: form.type, alias: domi_user_registration }
+

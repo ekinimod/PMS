@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="WebServers">
+    <option name="servers">
+      <webServer id="472352c0-5dc1-4cf7-b2ec-fc7fb73e9b23" name="PMS" url="http://PMS">
+        <fileTransfer mountedRoot="Y:\" accessType="MOUNT" />
+      </webServer>
+    </option>
+  </component>
+</project>

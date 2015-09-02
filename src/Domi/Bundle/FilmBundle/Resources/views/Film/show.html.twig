@@ -1,0 +1,40 @@
+{% extends '::base.html.twig' %}
+
+{% block body -%}
+    <div class="jumbotron">
+
+        <h1>{{ entity.libelle|capitalize }}</h1>
+        {% if entity.titre %}
+            <h1>
+                <small>{{ entity.titre|capitalize }}</small>
+            </h1>
+        {% endif %}
+
+        <p>{{ entity.description }}</p>
+
+        {% if entity.duree %}
+            <p>Durée : {{ entity.duree|date("H:i") }} h:m</p>
+        {% endif %}
+        <div class="well">
+            <p>La qualité du film est {{ entity.noteFilm.libelle }}.</p>
+
+            <p>La qualité de la vidéo est {{ entity.noteVideo.libelle }}.</p>
+        </div>
+        <div class="well">
+            <p>Ce film s'adresse à {{ entity.spectateur.libelle }}.</p>
+
+            <p>Il est en {{ entity.langue.libelle }}.</p>
+        </div>
+        <div class="panel panel-default">
+            <div class="panel-body">
+                {{ entity.fichier }}
+                {{ entity.image }}
+
+
+                {{ entity.gravee }}
+            </div>
+        </div>
+
+        {% include 'DomiFilmBundle:Film:boutons.html.twig' %}
+    </div>
+{% endblock %}

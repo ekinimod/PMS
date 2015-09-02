@@ -1,0 +1,18 @@
+{% extends '::base.html.twig' %}
+{% set title='Individu' %}
+{% set titre='Individu' %}
+{% set soustitre='Création Individu' %}
+
+{% block body -%}
+
+    {{ form(form) }}
+    {{ form_rest(form) }}
+
+    <ul class="record_actions">
+        <li>
+            <a href="{{ path('individu') }}">
+                Back to the list (src/Domi/Bundle/AdresseBundle/Resources/views/Individu/new.html.twig:13)
+            </a>
+        </li>
+    </ul>
+{% endblock %}
