@@ -1,27 +1,31 @@
 {% block body %}
-    <div class="row">
-        <div class="btn-group" role="group">
-            {# Boutons définis en tant que form #}
-            {% if delete_form is defined %}
-                <div class="col-md-4">{{ form(delete_form) }}</div>
-            {% endif %}
+        <div class="btn-group-lg" role="group">
 
             {# Boutons définis dans le entiteType#}
-            {% if data.btn_update is defined %}
-                <div class="col-md-4">{{ form_widget(data.btn_update) }}</div>
+            {% if edit_form.btn_update is defined %}
+                {{ form_widget(edit_form.btn_update) }}
+
             {% endif %}
 
-            {% if data.btn_create is defined %}
-                <div class="col-md-4">{{ form_widget(data.btn_create) }}</div>
+            {% if edit_form.btn_create is defined %}
+                {{ form_widget(edit_form.btn_create) }}
             {% endif %}
 
-            {# Boutons définis en tant que form #}
+           <a class="btn btn-default" href="/film">Retour Liste</a>
+
+
+
+
+            {# Boutons définis dans un form indépendant #}
+            {# Ils doivent donc être placés hors du form de l'entité #}
             {% if retour_form is defined %}
-                <div class="col-md-4"> {{ form(retour_form) }}</div>
+               {{ form(retour_form) }}
             {% endif %}
 
+            {% if delete_form is defined %}
+               {#{{ form(delete_form) }}#}
+            {% endif %}
         </div>
-    </div>
 
     {#{{ dump(retour_form) }}#}
 {% endblock %}

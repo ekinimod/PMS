@@ -1,27 +1,31 @@
 #!/usr/bin/env php
 <?php
-date_default_timezone_set('Europe/Paris');
-// if you don't want to setup permissions the proper way, just uncomment the following PHP line
-// read http://symfony.com/doc/current/book/installation.html#configuration-and-setup for more information
-//umask(0000);
+	date_default_timezone_set('Europe/Paris');
+	umask(0002); // This will let the permissions be 0775
+	//***************************
 
-set_time_limit(0);
+	// if you don't want to setup permissions the proper way, just uncomment the following PHP line
+	// read http://symfony.com/doc/current/book/installation.html#configuration-and-setup for more information
+	//umask(0000);
 
-require_once __DIR__.'/bootstrap.php.cache';
-require_once __DIR__.'/AppKernel.php';
 
-use Symfony\Bundle\FrameworkBundle\Console\Application;
-use Symfony\Component\Console\Input\ArgvInput;
-use Symfony\Component\Debug\Debug;
+	set_time_limit(0);
 
-$input = new ArgvInput();
-$env = $input->getParameterOption(array('--env', '-e'), getenv('SYMFONY_ENV') ?: 'dev');
-$debug = getenv('SYMFONY_DEBUG') !== '0' && !$input->hasParameterOption(array('--no-debug', '')) && $env !== 'prod';
+	require_once __DIR__ . '/bootstrap.php.cache';
+	require_once __DIR__ . '/AppKernel.php';
 
-if ($debug) {
-    Debug::enable();
-}
+	use Symfony\Bundle\FrameworkBundle\Console\Application;
+	use Symfony\Component\Console\Input\ArgvInput;
+	use Symfony\Component\Debug\Debug;
 
-$kernel = new AppKernel($env, $debug);
-$application = new Application($kernel);
-$application->run($input);
+	$input = new ArgvInput();
+	$env   = $input->getParameterOption(array('--env', '-e'), getenv('SYMFONY_ENV') ?: 'dev');
+	$debug = getenv('SYMFONY_DEBUG') !== '0' && !$input->hasParameterOption(array('--no-debug', '')) && $env !== 'prod';
+
+	if ($debug) {
+		Debug::enable();
+	}
+
+	$kernel      = new AppKernel($env, $debug);
+	$application = new Application($kernel);
+	$application->run($input);

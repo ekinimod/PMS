@@ -3,9 +3,17 @@ export PATH="$PATH:/share/CACHEDEV1_DATA/.qpkg/PHP/bin"
 #Rep de Symf
 cd /share/CACHEDEV1_DATA/Web/PMS
 
+###############
+## NAS
+###############
+restart webserver on qnap
+/etc/init.d/Qthttpd.sh restart
 
 
 
+###############
+## SYMFONY
+###############
 php composer.phar update
 
 # Pour vider le cache de prod

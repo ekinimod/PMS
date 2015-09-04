@@ -1,19 +1,31 @@
 {% extends '::base.html.twig' %}
 
 {% block body %}
-    <h1>Modification Film</h1>
+    <h1> {{ statut_creation==true ? 'Creation' : 'Modification' }} Film</h1>
 
-    {{ form_start(data) }}
-    {{ form_errors(data) }}
+    {% for flashMessage in app.session.flashbag.get('notice') %}
+        <div class="alert alert-success" role="alert">
+            {{ flashMessage }}
+        </div>
+    {% endfor %}
+    {% for flashMessage in app.session.flashbag.get('error') %}
+    <div class="alert alert-danger" role="alert">
+        {{ flashMessage }}
+    </div>
+    {% endfor %}
+
+
+    {{ form_start(edit_form) }}
+    {{ form_errors(edit_form) }}
     <div class="container-fluid">
         <div class="panel panel-default">
             <div class="panel-heading">
                 <div class="row">
                     <div class="col-md-2"></div>
                     <div class="col-md-8">
-                        {{ form_label(data.titre) }}
-                        {{ form_errors(data.titre) }}
-                        {{ form_widget(data.titre) }}
+                        {{ form_label(edit_form.titre) }}
+                        {{ form_errors(edit_form.titre) }}
+                        {{ form_widget(edit_form.titre) }}
                     </div>
                     <div class="col-md-2"></div>
                 </div>
@@ -22,9 +34,9 @@
                 <div class="row">
                     <div class="col-md-2"></div>
                     <div class="col-md-8">
-                        {{ form_label(data.description) }}
-                        {{ form_errors(data.description) }}
-                        {{ form_widget(data.description) }}
+                        {{ form_label(edit_form.description) }}
+                        {{ form_errors(edit_form.description) }}
+                        {{ form_widget(edit_form.description) }}
                     </div>
                     <div class="col-md-2"></div>
                 </div>
@@ -33,9 +45,9 @@
             <div class="row">
                 <div class="col-md-2"></div>
                 <div class="col-md-8">
-                    {{ form_label(data.libelle) }}
-                    {{ form_errors(data.libelle) }}
-                    {{ form_widget(data.libelle) }}
+                    {{ form_label(edit_form.libelle) }}
+                    {{ form_errors(edit_form.libelle) }}
+                    {{ form_widget(edit_form.libelle) }}
                 </div>
                 <div class="col-md-2"></div>
             </div>
@@ -44,34 +56,34 @@
             <div class="row">
                 <div class="col-md-3"></div>
                 <div class="col-md-2">
-                    {{ form_label(data.langue) }}
-                    {{ form_errors(data.langue) }}
-                    {{ form_widget(data.langue) }}
+                    {{ form_label(edit_form.langue) }}
+                    {{ form_errors(edit_form.langue) }}
+                    {{ form_widget(edit_form.langue) }}
                 </div>
                 <div class="col-md-2">
-                    {{ form_label(data.notefilm) }}
-                    {{ form_errors(data.notefilm) }}
-                    {{ form_widget(data.notefilm) }}
+                    {{ form_label(edit_form.notefilm) }}
+                    {{ form_errors(edit_form.notefilm) }}
+                    {{ form_widget(edit_form.notefilm) }}
                 </div>
                 <div class="col-md-2">
-                    {{ form_label(data.notevideo) }}
-                    {{ form_errors(data.notevideo) }}
-                    {{ form_widget(data.notevideo) }}
+                    {{ form_label(edit_form.notevideo) }}
+                    {{ form_errors(edit_form.notevideo) }}
+                    {{ form_widget(edit_form.notevideo) }}
                 </div>
                 <div class="col-md-3"></div>
             </div>
             <div class="row">
                 <div class="col-md-3"></div>
                 <div class="col-md-2">
-                    {{ form_label(data.genre) }}
-                    {{ form_errors(data.genre) }}
-                    {{ form_widget(data.genre) }}
+                    {{ form_label(edit_form.genre) }}
+                    {{ form_errors(edit_form.genre) }}
+                    {{ form_widget(edit_form.genre) }}
                 </div>
                 <div class="col-md-2"></div>
                 <div class="col-md-2">
-                    {{ form_label(data.spectateur) }}
-                    {{ form_errors(data.spectateur) }}
-                    {{ form_widget(data.spectateur) }}
+                    {{ form_label(edit_form.spectateur) }}
+                    {{ form_errors(edit_form.spectateur) }}
+                    {{ form_widget(edit_form.spectateur) }}
                 </div>
                 <div class="col-md-3"></div>
             </div>
@@ -79,15 +91,15 @@
             <div class="row">
                 <div class="col-md-3"></div>
                 <div class="col-md-2">
-                    {{ form_label(data.gravee) }}
-                    {{ form_errors(data.gravee) }}
-                    {{ form_widget(data.gravee) }}
+                    {{ form_label(edit_form.gravee) }}
+                    {{ form_errors(edit_form.gravee) }}
+                    {{ form_widget(edit_form.gravee) }}
                 </div>
                 <div class="col-md-2"></div>
                 <div class="col-md-2">
-                    {{ form_label(data.duree) }}
-                    {{ form_errors(data.duree) }}
-                    {{ form_widget(data.duree) }}
+                    {{ form_label(edit_form.duree) }}
+                    {{ form_errors(edit_form.duree) }}
+                    {{ form_widget(edit_form.duree) }}
                 </div>
 
                 <div class="col-md-3"></div>
@@ -95,26 +107,27 @@
             <div class="row">
                 <div class="col-md-3"></div>
                 <div class="col-md-2">
-                    {{ form_label(data.fichier) }}
-                    {{ form_errors(data.fichier) }}
-                    {{ form_widget(data.fichier) }}
+                    {{ form_label(edit_form.fichier) }}
+                    {{ form_errors(edit_form.fichier) }}
+                    {{ form_widget(edit_form.fichier) }}
                 </div>
                 <div class="col-md-2">
-                    {{ form_label(data.codec) }}
-                    {{ form_errors(data.codec) }}
-                    {{ form_widget(data.codec) }}
+                    {{ form_label(edit_form.codec) }}
+                    {{ form_errors(edit_form.codec) }}
+                    {{ form_widget(edit_form.codec) }}
                 </div>
                 <div class="col-md-2">
-                    {{ form_label(data.image) }}
-                    {{ form_errors(data.image) }}
-                    {{ form_widget(data.image) }}
+                    {{ form_label(edit_form.image) }}
+                    {{ form_errors(edit_form.image) }}
+                    {{ form_widget(edit_form.image) }}
                 </div>
                 <div class="col-md-3"></div>
             </div>
             <hr>
 
-
-            {#{{ form_rest(data) }}#}
+            {#S'assurer que les champs cachés sont bien passés (Jeton..)#}
+            {{ form_rest(edit_form) }}
+            {#Inclusion des boutons#}
             {% include 'DomiFilmBundle:Film:boutons.html.twig' %}
         </div>
     </div>

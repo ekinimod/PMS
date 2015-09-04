@@ -9,6 +9,13 @@
 	use Symfony\Component\OptionsResolver\OptionsResolverInterface;
 
 	class FilmType extends AbstractType {
+//		protected $satutCreation;
+
+//		public function __construct ()
+//		{
+////			$this->satutCreation= $satutCreation;
+//		}
+
 		/**
 		 * @param FormBuilderInterface $builder
 		 * @param array                $options
@@ -81,7 +88,7 @@
 			$film = $event->getData();
 			$form = $event->getForm();
 
-			// vérifie si l'objet Film est "nouveau"
+			// Vérifie si l'objet Film est "nouveau"
 			// Si aucune donnée n'est passée au formulaire, la donnée est "null".
 			// Ce doit être considéré comme un nouveau "Film"
 			if (!$film || null === $film->getId()) {
@@ -102,6 +109,15 @@
 
 		}
 
+		public function getDefaultButtons() {
+			$lesButtonsDef=array('btn_create','submit',
+			                     array(
+				                     'attr'  => array('class' => 'btn btn-default'),
+				                     'label' => 'Créer',
+			                     ),
+			                     );
+
+		}
 		/**
 		 * @param OptionsResolverInterface $resolver
 		 */

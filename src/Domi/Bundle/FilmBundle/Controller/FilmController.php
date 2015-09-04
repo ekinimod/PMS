@@ -40,92 +40,52 @@
 
 		}
 
-		/**
-		 * Creates a new Film entity.
-		 *
-		 */
-		public function createAction(Request $request) {
-			$entity = new Film();
-			$form   = $this->createCreateForm($entity);
-			// Lancement du Formulaire
-			$form->handleRequest($request);
-			// Validation puis Serialisation du Formulaire
-			if ($form->isValid()) {
-				$em = $this->getDoctrine()->getManager('film');
-				$em->persist($entity);
-				$em->flush();
 
-				return $this->redirect($this->generateUrl('film_show', array('id' => $entity->getId())));
-			}
 
-			return $this->render('DomiFilmBundle:Film:new.html.twig',
-			                     array(
-				                     'entity' => $entity,
-				                     'form'   => $form->createView(),
-			                     ));
-		}
-
-		/**
-		 * Creates a form to create a Film entity.
-		 *
-		 * @param Film $entity The entity
-		 *
-		 * @return \Symfony\Component\Form\Form The form
-		 */
-		private function createCreateForm(Film $entity) {
-			$form = $this->createForm(new FilmType(),
-			                          $entity,
-			                          array(
-				                          'action' => $this->generateUrl('film_create'),
-				                          'method' => 'POST',
-			                          ));
-
-			return $form;
-		}
 
 		/**
 		 * Displays a form to create a new Film entity.
 		 *
 		 */
-		public function newOrUpdateAction($id) {
-			$em = $this->getDoctrine()->getManager('film');
-			if (!$id) {
-				// New
-				$entity     = new Film();
-				$form       = $this->createCreateForm($entity);
-				$retourForm = $this->createRetourListeForm();
-				$deleteForm = $this->createDeleteForm($id);
+		public function newAction() {
+			// New
+			$entity        = new Film();
+			$editForm      = $this->createCreateForm($entity);
 
-				return $this->render('DomiFilmBundle:Film:form.html.twig',
-				                     array(
-					                     'entity'      => $entity,
-					                     'data'        => $form->createView(),
-					                     'delete_form' => $deleteForm->createView(),
-					                     'retour_form' => $retourForm->createView(),
-				                     ));
-			} else {
-				// Update
-				$entity = $em->getRepository('DomiFilmBundle:Film')->find($id);
+			return $this->render('DomiFilmBundle:Film:form.html.twig',
+			                     array(
+				                     'entity'          => $entity,
+				                     'edit_form'       => $editForm->createView(),
+				                     'statut_creation' => true,
+			                     ));
+		}
 
-			}
+		/**
+		 * Displays a form to edit an existing Film entity.
+		 *
+		 * @param $id
+		 *
+		 * @return \Symfony\Component\HttpFoundation\Response
+		 */
+		public function editAction($id) {
+			// Update
+			$em            = $this->getDoctrine()->getManager('film');
+			$entity        = $em->getRepository('DomiFilmBundle:Film')->find($id);
 
 			if (!$entity) {
-				throw $this->createNotFoundException('Unable to find Film entity.');
+				throw $this->createNotFoundException("Impossible de trouver le film ($id)");
 			}
 
-			$formulaire = $this->createEditForm($entity);
-			$retourForm = $this->createRetourListeForm();
+			$editForm   = $this->createEditForm($entity);
 			$deleteForm = $this->createDeleteForm($id);
 
 			return $this->render('DomiFilmBundle:Film:form.html.twig',
 			                     array(
-				                     'entity'      => $entity,
-				                     'data'        => $formulaire->createView(),
-				                     'delete_form' => $deleteForm->createView(),
-				                     'retour_form' => $retourForm->createView(),
+				                     'entity'          => $entity,
+				                     'edit_form'       => $editForm->createView(),
+				                     'delete_form'     => $deleteForm->createView(),
+				                     'statut_creation' => false,
 			                     ));
-
-
 		}
 
 		/**
@@ -138,36 +98,46 @@
 			if (!$entity) {
 				throw $this->createNotFoundException('Unable to find Film entity.');
 			}
-			$retourForm = $this->createRetourListeForm();
 			$deleteForm = $this->createDeleteForm($id);
-
 
 			return $this->render('DomiFilmBundle:Film:show.html.twig',
 			                     array(
 				                     'entity'      => $entity,
 				                     'delete_form' => $deleteForm->createView(),
-				                     'retour_form' => $retourForm->createView(),
 			                     ));
 		}
 
 		/**
-		 * Creates a form to edit a Film entity.
+		 * Creates a new Film entity.
 		 *
-		 * @param Film $entity The entity
-		 *
-		 * @return \Symfony\Component\Form\Form The form
 		 */
-		private function createEditForm(Film $entity) {
-			$form = $this->createForm(new FilmType(),
-			                          $entity,
-			                          array(
-				                          'action' => $this->generateUrl('film_new_or_update',
-				                                                         array('id' => $entity->getId())),
-				                          'method' => 'PUT',
-			                          ));
+		public function createAction(Request $request) {
+			$entity = new Film();
+			$form   = $this->createCreateForm($entity);
+			// Lancement du Formulaire
+			$form->handleRequest($request);
+			// Validation puis Serialisation du Formulaire
+			if ($form->isValid()) {
 
-			return $form;
+				$em = $this->getDoctrine()->getManager('film');
+				$em->persist($entity);
+				$em->flush();
+				$this->get('session')->getFlashBag()->add(
+					'notice',
+					'Le film a été crée !'
+				);
+
+				return $this->redirect($this->generateUrl('film_edit', array('id' => $entity->getId())));
+			}
+
+			return $this->render('DomiFilmBundle:Film:form.html.twig',
+			                     array(
+				                     'entity' => $entity,
+				                     'form'   => $form->createView(),
+				                     'statut_creation' => true,
+			                     ));
 		}
+
 
 		/**
 		 * Edits an existing Film entity.
@@ -185,15 +155,21 @@
 			// Validation puis Serialisation du Formulaire
 			if ($editForm->isValid()) {
 				$em->flush();
+				// $this->addFlash is equivalent to $this->get('session')->getFlashBag()->add
+				$this->addFlash(
+					'notice',
+					'Vos changements ont été enregistrés!'
+				);
 
-				// On retourne sur l'entité edité
-				return $this->redirect($this->generateUrl('film_new_or_update', array('id' => $id)));
+				// On retourne sur l'entité editée
+				return $this->redirect($this->generateUrl('film_edit', array('id' => $id)));
 			}
 
-			return $this->render('DomiFilmBundle:Film:edit.html.twig',
+			return $this->render('DomiFilmBundle:Film:form.html.twig',
 			                     array(
 				                     'entity'    => $entity,
 				                     'edit_form' => $editForm->createView(),
+				                     'statut_creation' => false,
 			                     ));
 		}
 
@@ -219,7 +195,41 @@
 
 			return $this->redirect($this->generateUrl('film'));
 		}
+		/**
+		 * Creates a form to edit a Film entity.
+		 *
+		 * @param Film $entity The entity
+		 *
+		 * @return \Symfony\Component\Form\Form The form
+		 */
+		private function createEditForm(Film $entity) {
+			$form = $this->createForm(new FilmType(),
+			                          $entity,
+			                          array(
+				                          'action' => $this->generateUrl('film_update',
+				                                                         array('id' => $entity->getId())),
+				                          'method' => 'PUT',
+			                          ));
 
+			return $form;
+		}
+		/**
+		 * Creates a form to create a Film entity.
+		 *
+		 * @param Film $entity The entity
+		 *
+		 * @return \Symfony\Component\Form\Form The form
+		 */
+		private function createCreateForm(Film $entity) {
+			$form = $this->createForm(new FilmType("Create"),
+			                          $entity,
+			                          array(
+				                          'action' => $this->generateUrl('film_create'),
+				                          'method' => 'POST',
+			                          ));
+
+			return $form;
+		}
 		/**
 		 * Creates a form to delete a Film entity by id.
 		 *
@@ -231,37 +241,14 @@
 			return $this->createFormBuilder()
 			            ->setAction($this->generateUrl('film_delete', array('id' => $id)))
 			            ->setMethod('DELETE')
-//			            ->add('submit', 'submit', array('label' => 'Effacer'))
-                        ->add('submit',
-                              'submit',
-                              array(
-	                              'attr'  => array('class' => 'btn btn-default'),
-	                              'label' => 'Effacer',
-                              ))
+			            ->add('submit',
+			                  'submit',
+			                  array(
+				                  'attr'  => array('class' => 'btn btn-default'),
+				                  'label' => 'Effacer',
+			                  ))
 			            ->getForm();
 		}
 
-		/**
-		 * Creates a form to Return To List of Film.
-		 *
-		 * @param mixed $id The entity id
-		 *
-		 * @return \Symfony\Component\Form\Form The form
-		 */
-		private function createRetourListeForm() {
-			return $this->createFormBuilder()
-			            ->setAction($this->generateUrl('film'))
-			            ->setMethod('POST')
-//			            ->add('btn_retour', 'submit', array('label' => 'Retour liste'))
-                        ->add('btn_retour',
-                              'submit',
-                              array(
-	                              'attr'  => array('class' => 'btn btn-default'),
-	                              'label' => 'Retour liste',
-                              ))
-			            ->getForm();
-
-
-		}
 
 	}
